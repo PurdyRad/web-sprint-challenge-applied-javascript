@@ -37,7 +37,7 @@ const entryHeader = document.querySelector('.header-container');
 
 const headerAppender = (selector) => {
   //console.log(headerAppender())
-  const header = Header("BREAKING NEWS", "4/20/69", "Humid af")
+  const header = Header("BREAKING NEWS", "The oldest day, yet the youngest experience", "Humid af")
   console.log(header)
   entryHeader.appendChild(header)
   // TASK 2
