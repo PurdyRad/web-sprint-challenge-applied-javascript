@@ -19,9 +19,9 @@ const Card = (article) => {
   author.classList.add('author')
   imgCont.classList.add('img-container')
 
-  headLine.textContent = headline
-  photo.src = authorPhoto
-  authorN.textContent = `By ${authorName}`
+  headLine.textContent = article.headline
+  photo.src = article.authorPhoto
+  authorN.textContent = `By ${article.authorName}`
 
   card.addEventListener('click', event => {
     console.log(headLine)
@@ -51,36 +51,28 @@ const Card = (article) => {
 
 const entryCard = document.querySelector('.cards-container')
 
-// axios.get('https://lambda-times-api.herokuapp.com/articles')
-// .then (() =>{
-//   console.log(axios)
-// })
-// .catch(() => {
 
-// })
 const cardAppender = (selector) => {
-  //selector.forEach(element => {
+    //console.log(selector)
+  
     axios.get(`https://lambda-times-api.herokuapp.com/articles`)
     .then((res) => {
-    console.log(res)
-    const card = Card(res.bootstrap)
+      const variable = res.data.articles.bootstrap
+     // console.log(variable)
+    variable.forEach(element => {
+     // console.log(element)
+    const card = Card(element)
+
+        console.log(card)
+
     entryCard.appendChild(card)
     })
     .catch((err) => {
     console.log('Access Denied!!!')
     });
 
-  //});
-  // axios.get(`https://lambda-times-api.herokuapp.com/articles`)
-  // .then((res) => {
-  //   console.log(res)
-  //   const card = Card(res)
-  //   entryCard.appendChild(card)
-  // })
-  // .catch((err) => {
-  //   console.log('Access Denied!!!')
-  // });
-
+  });
+ 
   
 
 

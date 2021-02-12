@@ -36,7 +36,10 @@ const Header = (title, date, temp) => {
 const entryHeader = document.querySelector('.header-container');
 
 const headerAppender = (selector) => {
-  
+  //console.log(headerAppender())
+  const header = Header("BREAKING NEWS", "4/20/69", "Humid af")
+  console.log(header)
+  entryHeader.appendChild(header)
   // TASK 2
   // ---------------------
   // Implement this function taking a css selector as its only argument.
