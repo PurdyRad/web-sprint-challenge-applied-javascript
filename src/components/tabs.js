@@ -1,4 +1,28 @@
+import axios from "axios"
+
 const Tabs = (topics) => {
+  const topic = document.createElement('div')
+  const jtab = document.createElement('div')
+  const btab = document.createElement('div')
+  const ttab = document.createElement('div')
+
+  topic.appendChild(jtab)
+  topic.appendChild(btab)
+  topic.appendChild(ttab)
+
+  topic.classList.add('topics')
+  jtab.classList.add('tab')
+  btab.classList.add('tab')
+  ttab.classList.add('tab')
+
+  jtab.textContent = 'javascript'
+  btab.textContent = 'bootstrap'
+  ttab.textContent = 'technology'
+  // console.log(topic)
+
+  return topic
+
+
   // TASK 3
   // ---------------------
   // Implement this function which takes an array of strings ("topics") as its only argument.
@@ -13,9 +37,21 @@ const Tabs = (topics) => {
   //   <div class="tab">technology</div>
   // </div>
   //
-}
+};
+
+const entryTabs = document.querySelector('.tabs-container');
 
 const tabsAppender = (selector) => {
+
+axios.get('https://lambda-times-api.herokuapp.com/topics')
+  .then((res) => {
+    const topic = Tabs(res)
+    entryTabs.appendChild(topic)
+  })
+  .catch((err) => {
+    console.log('Access Denied!!')
+  }) 
+
   // TASK 4
   // ---------------------
   // Implement this function which takes a css selector as its only argument.
